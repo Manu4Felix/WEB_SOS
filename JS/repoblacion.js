@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const comarca = entry['Comarca'];
         const ha = parseFloat(entry['Superfície (ha)']);
 
+        
         if (!agregatPerAny[any]) agregatPerAny[any] = 0;
         agregatPerAny[any] += ha;
 
