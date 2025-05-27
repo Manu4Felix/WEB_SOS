@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         distribucioComarcaAny[comarca][any] += ha;
       });
 
-      // Gràfic evolució anual
+      // Gráfico evolución anual
       const anys = Object.keys(agregatPerAny).sort();
       const haPerAny = anys.map(any => agregatPerAny[any]);
 
@@ -32,15 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
         y: haPerAny,
         type: 'scatter',
         mode: 'lines+markers',
-        name: 'Ha cremades',
+        name: 'Ha quemadas',
         line: { color: '#e53935' }
       }], {
-        title: 'Superfície cremada anual',
-        xaxis: { title: 'Any' },
-        yaxis: { title: 'Hectàrees' }
+        title: 'Superficie quemada anual',
+        xaxis: { title: 'Año' },
+        yaxis: { title: 'Hectáreas' }
       });
 
-      // Gràfic comarques
+      // Gráfico comarcas
       const comarques = Object.keys(agregatPerComarca);
       const haPerComarca = comarques.map(c => agregatPerComarca[c]);
 
@@ -50,9 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
         type: 'bar',
         marker: { color: '#ef6c00' }
       }], {
-        title: 'Comarques amb més superfície cremada',
+        title: 'Comarcas con mayor superficie quemada',
         xaxis: { title: 'Comarca' },
-        yaxis: { title: 'Hectàrees totals' }
+        yaxis: { title: 'Hectáreas totales' }
       });
 
       // Heatmap
@@ -70,12 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
         colorscale: 'YlOrRd',
         hovertemplate:
           'Comarca: %{x}<br>' +
-          'Any: %{y}<br>' +
-          'Hectàrees cremades: %{z:.2f} ha<extra></extra>'
+          'Año: %{y}<br>' +
+          'Hectáreas quemadas: %{z:.2f} ha<extra></extra>'
       }], {
-        title: 'Distribució d’incendis per any i comarca',
+        title: 'Distribución de incendios por año y comarca',
         xaxis: { title: 'Comarca' },
-        yaxis: { title: 'Any', tickformat: 'd' }
+        yaxis: { title: 'Año', tickformat: 'd' }
       });
 
       // Treemap
@@ -93,6 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
       Plotly.newPlot('grafica-treemap', treemapData);
     })
     .catch(error => {
-      console.error('Error carregant dades JSON:', error);
+      console.error('Error cargando datos JSON:', error);
     });
 });

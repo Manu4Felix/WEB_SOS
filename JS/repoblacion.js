@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const comarca = entry['Comarca'];
         const ha = parseFloat(entry['Superfície (ha)']);
 
-        
         if (!agregatPerAny[any]) agregatPerAny[any] = 0;
         agregatPerAny[any] += ha;
 
@@ -23,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         distribucioComarcaAny[comarca][any] += ha;
       });
 
-      // Gràfic anual
+      // Gráfico anual
       const anys = Object.keys(agregatPerAny).sort();
       const haPerAny = anys.map(any => agregatPerAny[any]);
 
@@ -32,15 +31,15 @@ document.addEventListener('DOMContentLoaded', () => {
         y: haPerAny,
         type: 'scatter',
         mode: 'lines+markers',
-        name: 'Ha repoblades',
+        name: 'Ha repobladas',
         line: { color: '#43a047' }
       }], {
-        title: 'Superfície repoblada anual',
-        xaxis: { title: 'Any' },
-        yaxis: { title: 'Hectàrees' }
+        title: 'Superficie repoblada anual',
+        xaxis: { title: 'Año' },
+        yaxis: { title: 'Hectáreas' }
       });
 
-      // Gràfic per comarques
+      // Gráfico por comarcas
       const comarques = Object.keys(agregatPerComarca);
       const haPerComarca = comarques.map(c => agregatPerComarca[c]);
 
@@ -50,12 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
         type: 'bar',
         marker: { color: '#66bb6a' }
       }], {
-        title: 'Comarques amb més superfície repoblada',
+        title: 'Comarcas con mayor superficie repoblada',
         xaxis: { title: 'Comarca' },
-        yaxis: { title: 'Hectàrees totals' }
+        yaxis: { title: 'Hectáreas totales' }
       });
 
-      // Heatmap per any i comarca
+      // Heatmap por año y comarca
       const anysUnics = [...new Set(Object.values(distribucioComarcaAny).flatMap(obj => Object.keys(obj)))].sort();
       const comarquesHeatmap = Object.keys(distribucioComarcaAny);
       const valors = anysUnics.map(any =>
@@ -70,15 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
         colorscale: 'Greens',
         hovertemplate:
           'Comarca: %{x}<br>' +
-          'Any: %{y}<br>' +
-          'Hectàrees repoblades: %{z:.2f} ha<extra></extra>'
+          'Año: %{y}<br>' +
+          'Hectáreas repobladas: %{z:.2f} ha<extra></extra>'
       }], {
-        title: 'Distribució de repoblació per any i comarca',
+        title: 'Distribución de repoblación por año y comarca',
         xaxis: { title: 'Comarca' },
-        yaxis: { title: 'Any', tickformat: 'd' }
+        yaxis: { title: 'Año', tickformat: 'd' }
       });
     })
     .catch(error => {
-      console.error('Error carregant el JSON de repoblació:', error);
+      console.error('Error cargando el JSON de repoblación:', error);
     });
 });

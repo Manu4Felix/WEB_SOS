@@ -4,9 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('../JSON/repoblacion.json').then(res => res.json())
   ]).then(([incendis, repoblacions]) => {
     const dadesUnificades = {};
-    const nombreIncendis = {}; // Nou objecte per comptar incendis
+    const nombreIncendis = {};
 
-    // Processar incendis
+    // Procesar incendios
     incendis.forEach(e => {
       const any = new Date(e["DATA INCENDI"].split("/").reverse().join("-")).getFullYear();
       const comarca = e["COMARCA"];
@@ -16,12 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!dadesUnificades[any][comarca]) dadesUnificades[any][comarca] = { cremat: 0, repoblat: 0 };
       dadesUnificades[any][comarca].cremat += ha;
 
-      // Comptar nombre d'incendis
       if (!nombreIncendis[comarca]) nombreIncendis[comarca] = 0;
       nombreIncendis[comarca]++;
     });
 
-    // Processar repoblacions
+    // Procesar repoblaciones
     repoblacions.forEach(e => {
       const any = e['Any'];
       const comarca = e['Comarca'];
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dadesUnificades[any][comarca].repoblat += ha;
     });
 
-    // Agregació anual
+    // Agregación anual
     const anys = Object.keys(dadesUnificades).sort();
     const haCremades = anys.map(any => {
       return Object.values(dadesUnificades[any]).reduce((acc, d) => acc + d.cremat, 0);
@@ -47,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         y: haCremades,
         type: 'scatter',
         mode: 'lines+markers',
-        name: 'Ha cremades',
+        name: 'Ha quemadas',
         line: { color: '#e53935' }
       },
       {
@@ -55,16 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
         y: haRepoblades,
         type: 'scatter',
         mode: 'lines+markers',
-        name: 'Ha repoblades',
+        name: 'Ha repobladas',
         line: { color: '#43a047' }
       }
     ], {
       title: 'Comparativa anual',
-      xaxis: { title: 'Any' },
-      yaxis: { title: 'Hectàrees totals' }
+      xaxis: { title: 'Año' },
+      yaxis: { title: 'Hectáreas totales' }
     });
 
-    // Agregació per comarca
+    // Agregación por comarca
     const agregatComarques = {};
     anys.forEach(any => {
       Object.entries(dadesUnificades[any]).forEach(([comarca, val]) => {
@@ -84,42 +83,42 @@ document.addEventListener('DOMContentLoaded', () => {
       return cremat > 0 ? (repoblat / cremat) * 100 : 0;
     });
 
-    // Gràfic comparatiu per comarca
+    // Gráfico comparativo por comarca
     Plotly.newPlot('grafica-comparativa-comarques', [
       {
         x: comarques,
         y: cremades,
         type: 'bar',
-        name: 'Cremades',
+        name: 'Quemadas',
         marker: { color: '#ef5350' }
       },
       {
         x: comarques,
         y: repoblades,
         type: 'bar',
-        name: 'Repoblades',
+        name: 'Repobladas',
         marker: { color: '#66bb6a' }
       }
     ], {
-      title: 'Incendis vs Repoblació per comarca',
+      title: 'Incendios vs Repoblación por comarca',
       barmode: 'group',
       xaxis: { title: 'Comarca' },
-      yaxis: { title: 'Hectàrees totals' }
+      yaxis: { title: 'Hectáreas totales' }
     });
 
-    // Gràfic percentatge de recuperació
+    // Gráfico de porcentaje de recuperación
     Plotly.newPlot('grafica-percentatge', [{
       x: comarques,
       y: percentatges,
       type: 'bar',
       marker: { color: '#26a69a' }
     }], {
-      title: '% de recuperació per comarca',
+      title: '% de recuperación por comarca',
       xaxis: { title: 'Comarca' },
-      yaxis: { title: '% Recuperació', ticksuffix: '%' }
+      yaxis: { title: '% Recuperación', ticksuffix: '%' }
     });
 
-    // Gràfic de dispersió: nombre d'incendis vs superfície repoblada
+    // Gráfico de dispersión: número de incendios vs superficie repoblada
     Plotly.newPlot('grafica-dispersio', [{
       x: incendisPerComarca,
       y: repoblades,
@@ -131,18 +130,18 @@ document.addEventListener('DOMContentLoaded', () => {
         color: repoblades,
         colorscale: 'Greens',
         showscale: true,
-        colorbar: { title: 'Ha repoblades' }
+        colorbar: { title: 'Ha repobladas' }
       },
       hovertemplate:
         'Comarca: %{text}<br>' +
-        'Incendis: %{x}<br>' +
-        'Ha repoblades: %{y:.2f}<extra></extra>'
+        'Incendios: %{x}<br>' +
+        'Ha repobladas: %{y:.2f}<extra></extra>'
     }], {
-      title: 'Relació entre nombre d’incendis i superfície repoblada',
-      xaxis: { title: 'Nombre d’incendis' },
-      yaxis: { title: 'Superfície repoblada (ha)' }
+      title: 'Relación entre número de incendios y superficie repoblada',
+      xaxis: { title: 'Número de incendios' },
+      yaxis: { title: 'Superficie repoblada (ha)' }
     });
   }).catch(error => {
-    console.error('Error carregant dades per a la comparativa:', error);
+    console.error('Error cargando datos para la comparativa:', error);
   });
 });
