@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dades d'Incendis Forestals</title>
+    <title>Datos de Incendios Forestales</title>
     <link rel="stylesheet" href="../CSS/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
@@ -12,6 +12,7 @@
 
 <body>
     <header>
+<<<<<<< HEAD
         <h1>🔥 Incendis Forestals a Catalunya</h1>
         <p>Impacte ambiental, dades històriques i evolució temporal dels incendis forestals.</p>
         <nav>
@@ -25,54 +26,58 @@
         </nav>
     </header>
 
+=======
+        <h1>🔥 Incendios Forestales en Cataluña</h1>
+        <p>Impacto ambiental, datos históricos y evolución temporal de los incendios forestales.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Inicio</a></li>
+            <li><a href="incendios.html">Incendios</a></li>
+            <li><a href="repoblacion.html">Repoblación</a></li>
+            <li><a href="comparativa.html">Comparativa</a></li>
+            <li><a href="conclusion.html">Conclusión y Recursos</a></li>
+        </ul>
+    </nav>
+
+>>>>>>> 975f49b657c0b40f72e7a8bc571d6a3a09ba8ae3
     <section>
-        <h2>📝 Introducció</h2>
-        <p>Aquest apartat estudia els incendis forestals a Catalunya a partir de dades reals compreses
-            entre 2011 i 2023. Les dades inclouen informació detallada com la data de l'incendi, la ubicació per comarca
-            i la superfície afectada, principalment forestal. Aquest tipus de registre permet analitzar amb precisió
-            l'evolució del fenomen durant els darrers anys.</p>
-        <p>A través de les visualitzacions interactives següents es poden observar tendències temporals, identificar les
-            comarques amb més acumulació d'hectàrees cremades i reconèixer patrons repetitius. Això proporciona una
-            visió global de la problemàtica i convida a reflexionar sobre la necessitat de polítiques de prevenció i
-            intervenció més efectives. El conjunt d'aquesta informació ajuda a entendre millor com i on impacten els
-            incendis forestals al territori català.</p>
+        <h2>📝 Introducción</h2>
+        <p>Este apartado estudia los incendios forestales en Cataluña a partir de datos reales comprendidos entre 2011 y 2023. Los datos incluyen información detallada como la fecha del incendio, la ubicación por comarca y la superficie afectada, principalmente forestal. Este tipo de registro permite analizar con precisión la evolución del fenómeno durante los últimos años.</p>
+        <p>A través de las siguientes visualizaciones interactivas se pueden observar tendencias temporales, identificar las comarcas con mayor acumulación de hectáreas quemadas y reconocer patrones repetitivos. Esto proporciona una visión global de la problemática e invita a reflexionar sobre la necesidad de políticas de prevención e intervención más efectivas. El conjunto de esta información ayuda a entender mejor cómo y dónde impactan los incendios forestales en el territorio catalán.</p>
     </section>
 
     <section>
-        <h2>📈 Evolució anual de superfície cremada</h2>
-        <p>Aquest gràfic mostra com ha evolucionat la superfície cremada total a Catalunya al llarg dels anys.</p>
-        <p>Permet identificar els anys més crítics i veure si hi ha una tendència creixent o decreixent en la
-            intensitat dels incendis forestals.</p>
+        <h2>📈 Evolución anual de superficie quemada</h2>
+        <p>Este gráfico muestra cómo ha evolucionado la superficie total quemada en Cataluña a lo largo de los años.</p>
+        <p>Permite identificar los años más críticos y ver si hay una tendencia creciente o decreciente en la intensidad de los incendios forestales.</p>
         <div id="grafica-anual" style="height:400px;"></div>
     </section>
 
     <section>
-        <h2>🧯 Comarques amb més superfície cremada</h2>
-        <p>Amb aquest gràfic es poden comparar les comarques segons la quantitat d'hectàrees cremades acumulades.</p>
-        <p>Serveix per identificar les zones més vulnerables als incendis i prioritzar accions de prevenció o
-            restauració.</p>
+        <h2>🧯 Comarcas con mayor superficie quemada</h2>
+        <p>Con este gráfico se pueden comparar las comarcas según la cantidad de hectáreas quemadas acumuladas.</p>
+        <p>Sirve para identificar las zonas más vulnerables a los incendios y priorizar acciones de prevención o restauración.</p>
         <div id="grafica-comarques" style="height:400px;"></div>
     </section>
 
     <section>
-        <h2>📊 Distribució per anys i comarques</h2>
-        <p>Aquesta visualització en forma de mapa de calor mostra la distribució dels incendis per any i comarca.</p>
-        <p>És útil per detectar patrons temporals i territorials, com per exemple si hi ha comarques amb recurrència
-            alta o si alguns anys van ser especialment devastadors en zones concretes.</p>
+        <h2>📊 Distribución por años y comarcas</h2>
+        <p>Esta visualización en forma de mapa de calor muestra la distribución de los incendios por año y comarca.</p>
+        <p>Es útil para detectar patrones temporales y territoriales, como por ejemplo si hay comarcas con alta recurrencia o si algunos años fueron especialmente devastadores en zonas concretas.</p>
         <div id="grafica-distribucio" style="height:400px;"></div>
     </section>
 
     <section>
-        <h2>🌳 Treemap d’incendis per comarca</h2>
-        <p>Visualització jeràrquica de la superfície total cremada per comarca, permet comparar visualment el pes
-            relatiu de cada territori dins el total acumulat d'incendis registrats.</p>
-        <p>Aquest format facilita una lectura ràpida de quines zones han estat més castigades pel foc i ajuda a posar en
-            context l'impacte territorial dels incendis forestals a Catalunya.</p>
+        <h2>🌳 Treemap de incendios por comarca</h2>
+        <p>Visualización jerárquica de la superficie total quemada por comarca, permite comparar visualmente el peso relativo de cada territorio dentro del total acumulado de incendios registrados.</p>
+        <p>Este formato facilita una lectura rápida de qué zonas han sido más castigadas por el fuego y ayuda a poner en contexto el impacto territorial de los incendios forestales en Cataluña.</p>
         <div id="grafica-treemap" style="height:500px;"></div>
     </section>
 
     <footer>
-        <p>&copy; 2025 Projecte DAM1 - Digitalització i Sostenibilitat</p>
+        <p>&copy; 2025 Proyecto DAM1 - Digitalización y Sostenibilidad - Manuel, Denis, Anabel</p>
     </footer>
 
     <script src="../JS/incendios.js"></script>

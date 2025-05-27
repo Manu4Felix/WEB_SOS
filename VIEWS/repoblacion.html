@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dades de Repoblació Forestal</title>
+  <title>Datos de Repoblación Forestal</title>
   <link rel="stylesheet" href="../CSS/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
@@ -12,6 +12,7 @@
 
 <body>
   <header>
+<<<<<<< HEAD
     <h1>🌱 Repoblació Forestal a Catalunya</h1>
     <p>Evolució de les superfícies repoblades i acció per la restauració ambiental.</p>
     <nav>
@@ -25,49 +26,64 @@
     </nav>
   </header>
 
+=======
+    <h1>🌱 Repoblación Forestal en Cataluña</h1>
+    <p>Evolución de las superficies repobladas y acciones para la restauración ambiental.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="home.html">Inicio</a></li>
+      <li><a href="incendios.html">Incendios</a></li>
+      <li><a href="repoblacion.html">Repoblación</a></li>
+      <li><a href="comparativa.html">Comparativa</a></li>
+      <li><a href="conclusion.html">Conclusión y Recursos</a></li>
+    </ul>
+  </nav>
+>>>>>>> 975f49b657c0b40f72e7a8bc571d6a3a09ba8ae3
 
   <section>
-    <h2>📝 Introducció</h2>
-    <p>En aquest apartat es presenta una anàlisi centrada en la repoblació forestal a Catalunya a partir de dades
-      oficials registrades en els darrers anys. Les dades inclouen la superfície repoblada per comarca i per any,
-      proporcionant una visió territorial i temporal de les accions destinades a la restauració del bosc.</p>
-    <p>A través de les visualitzacions que es mostren a continuació podem detectar quines zones han rebut més esforços
-      de repoblació, com ha evolucionat la superfície restaurada amb el temps, i si existeixen patrons de resposta
-      institucional o ecològica. Aquestes dades ajuden a avaluar la intensitat de la recuperació dels espais forestals i
-      a valorar possibles desigualtats entre comarques.</p>
+    <h2>📝 Introducción</h2>
+    <p>En este apartado se presenta un análisis centrado en la repoblación forestal en Cataluña a partir de datos
+      oficiales registrados en los últimos años. Los datos incluyen la superficie repoblada por comarca y por año,
+      proporcionando una visión territorial y temporal de las acciones destinadas a la restauración del bosque.</p>
+    <p>A través de las visualizaciones que se muestran a continuación podemos detectar qué zonas han recibido más esfuerzos
+      de repoblación, cómo ha evolucionado la superficie restaurada con el tiempo, y si existen patrones de respuesta
+      institucional o ecológica. Estos datos ayudan a evaluar la intensidad de la recuperación de los espacios forestales y
+      a valorar posibles desigualdades entre comarcas.</p>
   </section>
 
   <section>
-    <h2>📈 Evolució anual de superfície repoblada</h2>
-    <p>Aquest gràfic mostra la progressió de la repoblació forestal a Catalunya al llarg dels anys.</p>
-    <p>Permet observar si les actuacions de restauració han augmentat, disminuït o mantingut un patró constant segons el
-      període.</p>
+    <h2>📈 Evolución anual de superficie repoblada</h2>
+    <p>Este gráfico muestra la progresión de la repoblación forestal en Cataluña a lo largo de los años.</p>
+    <p>Permite observar si las actuaciones de restauración han aumentado, disminuido o mantenido un patrón constante según el
+      período.</p>
     <div id="grafica-repo-anual" style="height:400px;"></div>
   </section>
 
   <section>
-    <h2>🌍 Comarques amb més superfície repoblada</h2>
-    <p>Visualització que permet identificar les comarques amb més hectàrees repoblades acumulades.</p>
-    <p>Serveix per veure si existeixen desigualtats territorials o prioritats clares en les accions de restauració.</p>
+    <h2>🌍 Comarcas con mayor superficie repoblada</h2>
+    <p>Visualización que permite identificar las comarcas con más hectáreas repobladas acumuladas.</p>
+    <p>Sirve para ver si existen desigualdades territoriales o prioridades claras en las acciones de restauración.</p>
     <div id="grafica-repo-comarques" style="height:400px;"></div>
   </section>
 
   <section>
-    <h2>📊 Distribució per anys i comarques</h2>
-    <p>Amb aquest mapa de calor podem visualitzar l’activitat repobladora per comarca i any.</p>
-    <p>És útil per analitzar com s’han distribuït els esforços de repoblació al llarg del temps i detectar possibles
-      patrons territorials.</p>
+    <h2>📊 Distribución por años y comarcas</h2>
+    <p>Con este mapa de calor podemos visualizar la actividad repobladora por comarca y año.</p>
+    <p>Es útil para analizar cómo se han distribuido los esfuerzos de repoblación a lo largo del tiempo y detectar posibles
+      patrones territoriales.</p>
     <div id="grafica-repo-distribucio" style="height:400px;"></div>
   </section>
 
   <section>
-    <h2>🗺️ Mapa de calor de la superfície repoblada</h2>
-    <p>Visualització interactiva de la intensitat de repoblació forestal per comarca, basada en dades reals.</p>
+    <h2>🗺️ Mapa de calor de la superficie repoblada</h2>
+    <p>Visualización interactiva de la intensidad de repoblación forestal por comarca, basada en datos reales.</p>
     <iframe src="./mapa_repoblacio.html" width="100%" height="600" style="border:none;"></iframe>
   </section>
 
   <footer>
-    <p>&copy; 2025 Projecte DAM1 - Digitalització i Sostenibilitat</p>
+    <p>&copy; 2025 Proyecto DAM1 - Digitalización y Sostenibilidad - Manuel, Denis, Anabel</p>
   </footer>
 
   <script src="../JS/repoblacion.js"></script>
