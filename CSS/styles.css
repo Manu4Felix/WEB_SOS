@@ -9,13 +9,14 @@ body {
 header {
     background: #2e7d32;
     color: white;
-    padding: 2rem;
+    padding-top: 3%;
     text-align: center;
+    margin-bottom:1.5%;
 }
 
 nav {
     background: #1b5e20;
-    padding: 1rem;
+    padding: 1%;
 }
 
 nav ul {
