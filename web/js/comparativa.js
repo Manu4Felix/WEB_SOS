@@ -141,6 +141,79 @@ document.addEventListener('DOMContentLoaded', () => {
       xaxis: { title: 'Número de incendios' },
       yaxis: { title: 'Superficie repoblada (ha)' }
     });
+
+
+    // Gráfico de dispersión anual con número de incendios, superficie repoblada y superficie quemada
+const dispersioAnualData = [];
+const dispersioIndex = {};
+
+incendis.forEach(e => {
+  const any = new Date(e["DATA INCENDI"].split("/").reverse().join("-")).getFullYear();
+  const comarca = e["COMARCA"];
+  const ha = parseFloat(e["HAFORESTAL"]);
+  const key = `${comarca}-${any}`;
+
+  if (!dispersioIndex[key]) {
+    dispersioIndex[key] = {
+      COMARCA: comarca,
+      AÑO: any,
+      Num_Incendios: 0,
+      Ha_Quemada: 0,
+      Ha_Repoblada: 0
+    };
+  }
+
+  dispersioIndex[key].Num_Incendios++;
+  dispersioIndex[key].Ha_Quemada += ha;
+});
+
+repoblacions.forEach(e => {
+  const comarca = e["Comarca"];
+  const any = e["Any"];
+  const ha = parseFloat(e["Superfície (ha)"]);
+  const key = `${comarca}-${any}`;
+
+  if (!dispersioIndex[key]) {
+    dispersioIndex[key] = {
+      COMARCA: comarca,
+      AÑO: any,
+      Num_Incendios: 0,
+      Ha_Quemada: 0,
+      Ha_Repoblada: 0
+    };
+  }
+
+  dispersioIndex[key].Ha_Repoblada += ha;
+});
+
+Object.values(dispersioIndex).forEach(row => dispersioAnualData.push(row));
+
+const traceAnual = {
+  x: dispersioAnualData.map(d => d.Num_Incendios),
+  y: dispersioAnualData.map(d => d.Ha_Repoblada),
+  text: dispersioAnualData.map(d => `${d.COMARCA} (${d.AÑO})`),
+  marker: {
+    size: dispersioAnualData.map(d => d.Ha_Quemada),
+    color: dispersioAnualData.map(d => d.AÑO),
+    colorscale: 'Viridis',
+    showscale: true,
+    colorbar: { title: 'Año' }
+  },
+  mode: 'markers',
+  type: 'scatter',
+  hovertemplate:
+    'Comarca: %{text}<br>' +
+    'Incendios: %{x}<br>' +
+    'Ha repobladas: %{y:.2f}<br>' +
+    'Ha quemadas: %{marker.size:.2f}<extra></extra>'
+};
+
+Plotly.newPlot('grafica-dispersio-anual', [traceAnual], {
+  title: 'Dispersión anual: Incendios, Repoblación y Superficie Quemada',
+  xaxis: { title: 'Número de incendios' },
+  yaxis: { title: 'Superficie repoblada (ha)' }
+});
+
   }).catch(error => {
     console.error('Error cargando datos para la comparativa:', error);
   });

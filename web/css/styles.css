@@ -1,26 +1,27 @@
 body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 header {
-    background: #2e7d32;
-    color: white;
-    padding-top: 0.05%;
-    text-align: center;
-    margin-bottom: 1.5%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  background: #2e7d32;
+  color: white;
+  padding-top: 0.05%;
+  text-align: center;
+  margin-bottom: 1.5%;
+  position: static;
+  z-index: auto;
 }
 
 nav {
   background: #1b5e20; 
   padding: 1%;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
+  position: static; /* Asegura que el header siga el flujo del documento */
+  z-index: auto; /* Cambiado para evitar interferencias */
 }
 
 nav ul {
@@ -68,7 +69,6 @@ nav a:hover::after {
   transform: scaleX(1);
 }
 
-
 section {
   padding: 2rem;
   max-width: 1000px;
@@ -82,9 +82,8 @@ section {
 
 h1,
 h2 {
-  color: #0d3b12; 
+  color: #0d3b12;
 }
-
 
 footer {
   background: #2e7d32;
@@ -115,7 +114,11 @@ footer {
 }
 
 
-header, nav, section, footer, .main-content {
+header,
+nav,
+section,
+footer,
+.main-content {
   position: relative;
   z-index: 1;
 }
@@ -151,13 +154,4 @@ header, nav, section, footer, .main-content {
   iframe {
     height: 400px;
   }
-
-  #particles-js{
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0.3;
-}
 }

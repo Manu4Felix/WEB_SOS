@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d49d28c4939a2d50c8e780fb57b668cc {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+                         <h3 align="center" style="font-size:16px"><b>Mapa de Calor de Superficie Quemada por Comarca en Cataluña (ha)</b></h3>
+                         
+    
+            <div class="folium-map" id="map_d49d28c4939a2d50c8e780fb57b668cc" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d49d28c4939a2d50c8e780fb57b668cc = L.map(
+                "map_d49d28c4939a2d50c8e780fb57b668cc",
+                {
+                    center: [41.8, 1.8],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 8,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f31d9c39ae15623db68524b719c3fda5 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f31d9c39ae15623db68524b719c3fda5.addTo(map_d49d28c4939a2d50c8e780fb57b668cc);
+        
+    
+            var heat_map_b51960678534bae6a3fda40e720f4c36 = L.heatLayer(
+                [[41.3033, 1.2275, 581.5899999999999], [42.2675, 3.0667, 10620.869999999999], [41.3444, 1.7383, 646.01], [42.335, 1.4667, 366.76], [42.5461, 0.575, 269.13], [41.5933, 1.6175, 1398.22], [41.7361, 1.8375, 2179.5699999999997], [41.095, 1.0342, 160.79], [40.7583, 0.6583, 591.77], [41.3667, 2.0833, 381.29], [41.2061, 1.61, 117.57], [41.3888, 2.159, 109.26], [42.1033, 1.8261, 19.49], [42.2333, 1.5833, 292.02], [41.3833, 1.1833, 1460.9299999999998], [41.2233, 1.7333, 235.51], [41.9833, 2.8167, 283.86], [41.6, 2.65, 70.53], [40.74, 0.6883, 101.74], [41.8833, 0.8833, 3022.47], [41.95, 2.25, 31.75], [42.1667, 0.75, 208.98], [42.3667, 1.0833, 1354.55], [41.2333, 0.6333, 8119.26], [42.2, 2.2, 25.29], [41.8, 2.6, 120.24], [42.1333, 1.5, 316.16], [41.15, 1.25, 599.79], [40.8, 0.5, 611.75], [41.6, 1.2, 541.55], [41.5769, 2.0194, 89.76], [41.6, 2.35, 37.67]],
+                {
+  "minOpacity": 0.5,
+  "maxZoom": 18,
+  "radius": 15,
+  "blur": 10,
+}
+            );
+        
+    
+            heat_map_b51960678534bae6a3fda40e720f4c36.addTo(map_d49d28c4939a2d50c8e780fb57b668cc);
+        
+    
+            tile_layer_f31d9c39ae15623db68524b719c3fda5.addTo(map_d49d28c4939a2d50c8e780fb57b668cc);
+        
+    
+            heat_map_b51960678534bae6a3fda40e720f4c36.addTo(map_d49d28c4939a2d50c8e780fb57b668cc);
+        
+</script>
+</html>

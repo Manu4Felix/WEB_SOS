@@ -12,6 +12,8 @@
 
 <body>
     <div id="particles-js"></div>
+    <script src="js/rutas.js"></script>
+    <script src="js/incendios.js"></script>
     <header>
         <h1>🔥 Incendios forestales en Cataluña</h1>
         <p>Impacto ambiental, datos históricos y evolución temporal de los incendios forestales.</p>
@@ -72,17 +74,22 @@
             contexto el impacto territorial de los incendios forestales en Cataluña.</p>
         <div id="grafica-treemap" style="height:500px;"></div>
     </section>
+    <section>
+        <h2>🗺️ Mapa de calor de la superficie quemada</h2>
+        <p>Visualización interactiva de la superficie forestal quemada por comarca, mostrando la distribución geográfica
+            del impacto ambiental.</p>
+        <iframe src="mapas/mapa_incendios.html" width="100%" height="600" style="border:none;"></iframe>
+
+    </section>
 
     <footer>
         <p>&copy; 2025 Proyecto DAM1 - Digitalización y Sostenibilidad - Manuel, Denis, Anabel</p>
     </footer>
 
-    <script src="js/rutas.js"></script>
-    <script src="js/incendios.js"></script>
     <script src="particulas/particles.min.js"></script>
-  <script>
-    particlesJS.load('particles-js', 'particulas/particlesjs-config.json');
-  </script>
+    <script>
+        particlesJS.load('particles-js', 'particulas/particlesjs-config.json');
+    </script>
 
 </body>
 
