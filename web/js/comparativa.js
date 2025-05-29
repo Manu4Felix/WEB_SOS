@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   Promise.all([
-    fetch('../JSON/incendios.json').then(res => res.json()),
-    fetch('../JSON/repoblacion.json').then(res => res.json())
+    fetch('/api/incendios').then(res => res.json()).catch(() => fetch('../api/json/incendios.json').then(r => r.json())),
+    fetch('/api/repoblacion').then(res => res.json()).catch(() => fetch('../api/json/repoblacion.json').then(r => r.json()))
   ]).then(([incendis, repoblacions]) => {
     const dadesUnificades = {};
     const nombreIncendis = {};

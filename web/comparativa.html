@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comparativa Incendios vs Repoblación</title>
-  <link rel="stylesheet" href="../CSS/styles.css">
+  <link rel="stylesheet" href="css/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
 </head>
@@ -16,12 +16,12 @@
     <p>Análisis conjunto por comarca y año. Sostenibilidad forestal en datos.</p>
     <nav>
       <ul>
-        <li><a href="home.html">Inicio</a></li>
-        <li><a href="ods.html">ODS</a></li>
-        <li><a href="incendios.html">Incendios</a></li>
-        <li><a href="repoblacion.html">Repoblación</a></li>
-        <li><a href="comparativa.html">Comparativa</a></li>
-        <li><a href="conclusion.html">Conclusión y Recursos</a></li>
+        <li><a data-page="home" href="home.html">Inicio</a></li>
+        <li><a data-page="ods" href="ods.html">ODS</a></li>
+        <li><a data-page="incendios" href="incendios.html">Incendios</a></li>
+        <li><a data-page="repoblacion" href="repoblacion.html">Repoblación</a></li>
+        <li><a data-page="comparativa" href="comparativa.html">Comparativa</a></li>
+        <li><a data-page="conclusion" href="conclusion.html">Conclusión y Recursos</a></li>
       </ul>
     </nav>
   </header>
@@ -31,24 +31,19 @@
     <p>Este apartado reúne y compara datos sobre incendios y repoblaciones forestales en Cataluña, ofreciendo una visión
       conjunta del impacto y de las acciones de restauración por comarca y por año. Utilizando datos agregados y
       procesados, la comparativa permite ver cómo se ha intentado compensar la afectación de los incendios mediante
-      actuaciones
-      de repoblación en el mismo territorio o en zonas cercanas.</p>
+      actuaciones de repoblación en el mismo territorio o en zonas cercanas.</p>
     <p>Gracias a las visualizaciones se pueden identificar desequilibrios importantes, como comarcas con mucha
-      superficie
-      quemada pero poca restaurada, o bien ejemplos de recuperación efectiva. Este enfoque ayuda a entender hasta qué
-      punto las acciones de repoblación han sido suficientes para equilibrar los daños causados por el fuego y aporta
-      una base de
-      datos para valorar políticas de sostenibilidad y gestión forestal.</p>
+      superficie quemada pero poca restaurada, o bien ejemplos de recuperación efectiva. Este enfoque ayuda a entender
+      hasta qué punto las acciones de repoblación han sido suficientes para equilibrar los daños causados por el fuego y
+      aporta una base de datos para valorar políticas de sostenibilidad y gestión forestal.</p>
   </section>
 
   <section>
     <h2>📊 Comparativa anual de hectáreas quemadas y repobladas</h2>
     <p>Este gráfico muestra la evolución en paralelo de las hectáreas quemadas y las hectáreas repobladas por año en
-      toda
-      Cataluña.</p>
+      toda Cataluña.</p>
     <p>Es útil para entender si el esfuerzo de repoblación se ha mantenido constante o si ha aumentado en respuesta a
-      años
-      críticos con más afectación por fuego.</p>
+      años críticos con más afectación por fuego.</p>
     <div id="grafica-comparativa-anual" style="height:400px;"></div>
   </section>
 
@@ -66,8 +61,7 @@
     <p>Muestra el porcentaje de recuperación calculado como (Superficie repoblada / quemada) * 100. Este indicador ayuda
       a visualizar el esfuerzo de restauración en relación al impacto del fuego.</p>
     <p>Comarcas con un porcentaje alto indican una respuesta fuerte o un impacto relativamente menor, mientras que
-      valores
-      bajos pueden sugerir falta de actuación o necesidad de refuerzo.</p>
+      valores bajos pueden sugerir falta de actuación o necesidad de refuerzo.</p>
     <div id="grafica-percentatge" style="height:400px;"></div>
   </section>
 
@@ -83,7 +77,8 @@
     <p>&copy; 2025 Proyecto DAM1 - Digitalización y Sostenibilidad - Manuel, Denis, Anabel</p>
   </footer>
 
-  <script src="../JS/comparativa.js"></script>
+  <script src="js/rutas.js"></script>
+  <script src="js/comparativa.js"></script>
 </body>
 
 </html>

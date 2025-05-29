@@ -1,0 +1,30 @@
+const express = require('express');
+const path = require('path');
+const fs = require('fs');
+const router = express.Router();
+
+const readJson = (filename) => {
+  try {
+    const data = fs.readFileSync(
+      path.join(__dirname, '../json', filename),
+      'utf-8'
+    );
+    return JSON.parse(data);
+  } catch (err) {
+    return null;
+  }
+};
+
+router.get('/incendios', (req, res) => {
+  const data = readJson('incendios.json');
+  if (!data) return res.status(500).json({ error: 'No se pudo leer el archivo de incendios' });
+  res.json(data);
+});
+
+router.get('/repoblacion', (req, res) => {
+  const data = readJson('repoblacion.json');
+  if (!data) return res.status(500).json({ error: 'No se pudo leer el archivo de repoblación' });
+  res.json(data);
+});
+
+module.exports = router;

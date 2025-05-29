@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('../JSON/incendios.json')
+  fetch('/api/repoblacion')
     .then(response => response.json())
+    .catch(() => fetch('../api/json/repoblacion.json').then(r => r.json()))
     .then(data => {
       const agregatPerAny = {};
       const agregatPerComarca = {};
       const distribucioComarcaAny = {};
 
       data.forEach(entry => {
-        const dataIncendi = new Date(entry["DATA INCENDI"].split("/").reverse().join("-"));
-        const any = dataIncendi.getFullYear();
-        const comarca = entry["COMARCA"];
-        const ha = parseFloat(entry["HAFORESTAL"]);
+        const any = entry['Any'];
+        const comarca = entry['Comarca'];
+        const ha = parseFloat(entry['Superfície (ha)']);
 
         if (!agregatPerAny[any]) agregatPerAny[any] = 0;
         agregatPerAny[any] += ha;
@@ -23,76 +23,62 @@ document.addEventListener('DOMContentLoaded', () => {
         distribucioComarcaAny[comarca][any] += ha;
       });
 
-      // Gráfico evolución anual
+      // Gráfico anual
       const anys = Object.keys(agregatPerAny).sort();
       const haPerAny = anys.map(any => agregatPerAny[any]);
 
-      Plotly.newPlot('grafica-anual', [{
+      Plotly.newPlot('grafica-repo-anual', [{
         x: anys,
         y: haPerAny,
         type: 'scatter',
         mode: 'lines+markers',
-        name: 'Ha quemadas',
-        line: { color: '#e53935' }
+        name: 'Ha repobladas',
+        line: { color: '#43a047' }
       }], {
-        title: 'Superficie quemada anual',
+        title: 'Superficie repoblada anual',
         xaxis: { title: 'Año' },
         yaxis: { title: 'Hectáreas' }
       });
 
-      // Gráfico comarcas
+      // Gráfico por comarcas
       const comarques = Object.keys(agregatPerComarca);
       const haPerComarca = comarques.map(c => agregatPerComarca[c]);
 
-      Plotly.newPlot('grafica-comarques', [{
+      Plotly.newPlot('grafica-repo-comarques', [{
         x: comarques,
         y: haPerComarca,
         type: 'bar',
-        marker: { color: '#ef6c00' }
+        marker: { color: '#66bb6a' }
       }], {
-        title: 'Comarcas con mayor superficie quemada',
+        title: 'Comarcas con mayor superficie repoblada',
         xaxis: { title: 'Comarca' },
         yaxis: { title: 'Hectáreas totales' }
       });
 
-      // Heatmap
+      // Heatmap por año y comarca
       const anysUnics = [...new Set(Object.values(distribucioComarcaAny).flatMap(obj => Object.keys(obj)))].sort();
       const comarquesHeatmap = Object.keys(distribucioComarcaAny);
       const valors = anysUnics.map(any =>
         comarquesHeatmap.map(comarca => distribucioComarcaAny[comarca][any] || 0)
       );
 
-      Plotly.newPlot('grafica-distribucio', [{
+      Plotly.newPlot('grafica-repo-distribucio', [{
         z: valors,
         x: comarquesHeatmap,
         y: anysUnics,
         type: 'heatmap',
-        colorscale: 'YlOrRd',
+        colorscale: 'Greens',
         hovertemplate:
           'Comarca: %{x}<br>' +
           'Año: %{y}<br>' +
-          'Hectáreas quemadas: %{z:.2f} ha<extra></extra>'
+          'Hectáreas repobladas: %{z:.2f} ha<extra></extra>'
       }], {
-        title: 'Distribución de incendios por año y comarca',
+        title: 'Distribución de repoblación por año y comarca',
         xaxis: { title: 'Comarca' },
         yaxis: { title: 'Año', tickformat: 'd' }
       });
-
-      // Treemap
-      const treemapData = comarques.map((comarca, index) => {
-        return {
-          labels: comarques,
-          parents: comarques.map(() => ""),
-          values: haPerComarca,
-          type: 'treemap',
-          textinfo: 'label+value+percent entry',
-          marker: { colorscale: 'Reds' }
-        };
-      });
-
-      Plotly.newPlot('grafica-treemap', treemapData);
     })
     .catch(error => {
-      console.error('Error cargando datos JSON:', error);
+      console.error('Error cargando el JSON de repoblación:', error);
     });
 });
