@@ -1,6 +1,10 @@
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 const router = express.Router();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Página de inicio (redirección)
 router.get('/', (req, res) => {
@@ -37,4 +41,4 @@ router.get('/conclusion', (req, res) => {
   res.sendFile(path.join(__dirname, '../../web/conclusion.html'));
 });
 
-module.exports = router;
+export default router;

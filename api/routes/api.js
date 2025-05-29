@@ -1,12 +1,13 @@
-const express = require('express');
-const path = require('path');
-const fs = require('fs');
+import express from 'express';
+import path from 'path';
+import fs from 'fs';
+
 const router = express.Router();
 
 const readJson = (filename) => {
   try {
     const data = fs.readFileSync(
-      path.join(__dirname, '../json', filename),
+      path.join(path.dirname(new URL(import.meta.url).pathname), '../json', filename),
       'utf-8'
     );
     return JSON.parse(data);
@@ -27,4 +28,4 @@ router.get('/repoblacion', (req, res) => {
   res.json(data);
 });
 
-module.exports = router;
+export default router;
